@@ -1,6 +1,6 @@
 {
   "name": "@julusian/midi",
-  "version": "3.0.0-2",
+  "version": "3.0.0-3",
   "scripts": {
     "install": "pkg-prebuilds-verify ./binding-options.js || node-gyp rebuild",
     "build": "node-gyp build",
