@@ -16,8 +16,8 @@ private:
         size_t messageLength;
     };
 
-    static void CallbackJs(Napi::Env env, Napi::Function callback, void *context, MidiMessage *data);
-    using TSFN_t = Napi::TypedThreadSafeFunction<void, MidiMessage, CallbackJs>;
+    static void CallbackJs(Napi::Env env, Napi::Function callback, NodeMidiInput *context, MidiMessage *data);
+    using TSFN_t = Napi::TypedThreadSafeFunction<NodeMidiInput, MidiMessage, CallbackJs>;
 
     std::unique_ptr<RtMidiIn> handle;
 

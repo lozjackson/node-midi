@@ -72,7 +72,13 @@ void NodeMidiInput::setupCallback(const Napi::Env &env)
             emitMessage.Value(),
             "Midi Input",
             0,
-            1);
+            1,
+            this,
+            [](Napi::Env, void *, NodeMidiInput *ctx) { // Finalizer used to clean threads up
+                // This TSFN can be destroyed when the worker_thread is destroyed, well before the NodeMidiInput is.
+                ctx->cleanup();
+            }
+        );
 
         handle->setCallback(&NodeMidiInput::Callback, this);
     }
@@ -111,9 +117,9 @@ void deleteArray(const Napi::Env &env, unsigned char *ptr)
     delete[] ptr;
 }
 
-void NodeMidiInput::CallbackJs(Napi::Env env, Napi::Function callback, void *context, MidiMessage *data)
+void NodeMidiInput::CallbackJs(Napi::Env env, Napi::Function callback, NodeMidiInput *context, MidiMessage *data)
 {
-    if (env != nullptr)
+    if (env != nullptr && callback != nullptr)
     {
         Napi::Value deltaTime = Napi::Number::New(env, data->deltaTime);
 
