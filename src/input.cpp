@@ -86,15 +86,17 @@ void NodeMidiInput::setupCallback(const Napi::Env &env)
 
 void NodeMidiInput::cleanup()
 {
-    handle->closePort();
+    if (handle != nullptr) {
+        handle->closePort();
 
-    if (configured)
-    {
-        configured = false;
+        if (configured)
+        {
+            configured = false;
 
-        handle->cancelCallback();
-        handleMessage.Abort();
-        handleMessage.Release();
+            handle->cancelCallback();
+            handleMessage.Abort();
+            handleMessage.Release();
+        }
     }
 }
 
