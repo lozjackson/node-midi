@@ -114,20 +114,13 @@ void NodeMidiInput::Callback(double deltaTime, std::vector<unsigned char> *messa
     input->handleMessage.NonBlockingCall(data);
 }
 
-void deleteArray(const Napi::Env &env, unsigned char *ptr)
-{
-    delete[] ptr;
-}
-
 void NodeMidiInput::CallbackJs(Napi::Env env, Napi::Function callback, NodeMidiInput *context, MidiMessage *data)
 {
     if (env != nullptr && callback != nullptr)
     {
         Napi::Value deltaTime = Napi::Number::New(env, data->deltaTime);
 
-        Napi::Value message = Napi::Buffer<unsigned char>::New(env, data->message, data->messageLength, deleteArray);
-        // data->message is now owned by the buffer
-        data->message = nullptr;
+        Napi::Value message = Napi::Buffer<unsigned char>::Copy(env, data->message, data->messageLength);
 
         callback.Call({deltaTime, message});
     }
