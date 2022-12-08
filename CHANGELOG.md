@@ -1,5 +1,9 @@
 # node-midi Changelog
 
+## Version 3.0.0
+
+* Rewrite to use node-api, providing better node version compatability
+
 ## Version 2.0.0
 
 * Add tests for listing ports.
