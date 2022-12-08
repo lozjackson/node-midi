@@ -77,8 +77,7 @@ void NodeMidiInput::setupCallback(const Napi::Env &env)
             [](Napi::Env, void *, NodeMidiInput *ctx) { // Finalizer used to clean threads up
                 // This TSFN can be destroyed when the worker_thread is destroyed, well before the NodeMidiInput is.
                 ctx->cleanup();
-            }
-        );
+            });
 
         handle->setCallback(&NodeMidiInput::Callback, this);
     }
@@ -86,7 +85,8 @@ void NodeMidiInput::setupCallback(const Napi::Env &env)
 
 void NodeMidiInput::cleanup()
 {
-    if (handle != nullptr) {
+    if (handle != nullptr)
+    {
         handle->closePort();
 
         if (configured)
