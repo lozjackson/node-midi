@@ -1,5 +1,9 @@
 # node-midi Changelog
 
+## Version 3.0.1
+
+* Fix crash if output device failed to open
+
 ## Version 3.0.0
 
 * Rewrite to use node-api, providing better node version compatability
