@@ -24,6 +24,21 @@ $ cd node-midi/
 $ npm install
 ```
 
+### Webpack
+
+If you are using webpack, you will need to tell it to make the prebuilt binaries available to your application.  
+One way to do this is by using a plugin, to perform the copy:
+
+```js
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "./node_modules/@julusian/midi/prebuilds", to: "./prebuilds" },
+      ],
+    }),
+  ]
+```
+
 ## Usage
 
 ### MIDI Messages
