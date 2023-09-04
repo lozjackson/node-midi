@@ -1,5 +1,10 @@
 # node-midi Changelog
 
+## Version 3.1.0
+
+* Fix typescript typings [#9](https://github.com/Julusian/node-midi/pull/9) [#6](https://github.com/Julusian/node-midi/pull/6)
+* Add method to destroy RtMidi handle explicitly [#7](https://github.com/Julusian/node-midi/issues/7) [#10](https://github.com/Julusian/node-midi/pull/10)
+
 ## Version 3.0.1
 
 * Fix crash if output device failed to open
