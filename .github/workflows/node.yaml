@@ -29,30 +29,32 @@ jobs:
           - os: macos-11
             arch: arm64
             is-native: false
-          - os: macos-10.15
+          - os: macos-11
             arch: x64
             is-native: true
           # linux
-          - os: ubuntu-18.04
+          - os: ubuntu-latest
             arch: x64
             is-native: true
+            docker-arch: linux/amd64
+            docker-image: node:18-buster
           # linux-libc
           - os: ubuntu-latest
             arch: arm64
             is-native: false
             docker-arch: linux/arm64
-            docker-image: node:14-buster
+            docker-image: node:18-buster
           - os: ubuntu-latest
             arch: arm
             is-native: false
             docker-arch: linux/arm/v7
-            docker-image: node:14-buster
+            docker-image: node:18-buster
           # linux-musl
           - os: ubuntu-latest
             arch: x64
-            is-native: false
+            is-native: true
             docker-arch: linux/amd64
-            docker-image: node:14-alpine
+            docker-image: node:18-alpine
             libc: musl
 
     steps:
@@ -70,10 +72,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libasound2-dev
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 18.x
 
       - name: rebuild
         if: ${{ !matrix.docker-arch }}
