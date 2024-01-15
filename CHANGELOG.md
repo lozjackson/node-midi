@@ -1,5 +1,9 @@
 # node-midi Changelog
 
+## Version 3.2.0
+
+* Update RtMidi to 6.0
+
 ## Version 3.1.0
 
 * Fix typescript typings [#9](https://github.com/Julusian/node-midi/pull/9) [#6](https://github.com/Julusian/node-midi/pull/6)
