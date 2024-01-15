@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "mocha": "^10.2.0",
+    "node-gyp": "^10.0.1",
     "should": "^13.2.3"
   },
   "repository": {
@@ -70,5 +71,6 @@
     "vendor/rtmidi/RtMidi.cpp",
     "vendor/rtmidi/RtMidi.h",
     "prebuilds/"
-  ]
+  ],
+  "packageManager": "yarn@4.0.2"
 }
