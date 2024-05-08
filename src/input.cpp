@@ -161,9 +161,6 @@ Napi::Value NodeMidiInput::SetBufferSize(const Napi::CallbackInfo &info)
     unsigned int size = info[0].ToNumber();
     unsigned int count = info[1].ToNumber();
 
-    std::cout << "SetBufferSize" << std::endl;
-    std::cout << size << std::endl;
-
     try
     {
         handle->setBufferSize(size, count);

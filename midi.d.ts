@@ -39,6 +39,12 @@ export class Input extends EventEmitter {
     openVirtualPort(port: string): void;
 
     on(event: 'message', callback: MidiCallback): this;
+    /**
+     * Set the size of the internal buffer used to cache incoming MIDI messages.
+     * The default size is 1024 bytes. The count parameter specifies the number
+     * of messages the buffer can hold.
+     */
+    setBufferSize(size: number, count: number): void;
 }
 
 export class Output {
