@@ -16,9 +16,6 @@ class Input extends EventEmitter {
     })
   }
 
-  setBufferSize(size, count) {
-    return this.input.setBufferSize(size, count)
-  }
   closePort() {
     return this.input.closePort()
   }
@@ -42,6 +39,9 @@ class Input extends EventEmitter {
   }
   openVirtualPort(port) {
     return this.input.openVirtualPort(port)
+  }
+  setBufferSize(size, count) {
+    return this.input.setBufferSize(size, count)
   }
 }
 
