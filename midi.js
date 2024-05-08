@@ -16,6 +16,9 @@ class Input extends EventEmitter {
     })
   }
 
+  setBufferSize(size, count) {
+    return this.input.setBufferSize(size, count)
+  }
   closePort() {
     return this.input.closePort()
   }
