@@ -42,9 +42,10 @@ export class Input extends EventEmitter {
     /**
      * Set the size of the internal buffer used to cache incoming MIDI messages.
      * The default size is 1024 bytes. The count parameter specifies the number
-     * of messages the buffer can hold.
+     * of messages the buffer can hold. If count is not specified, it defaults 
+     * to 4.
      */
-    setBufferSize(size: number, count: number): void;
+    setBufferSize(size: number, count?: number): void;
 }
 
 export class Output {
