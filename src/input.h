@@ -37,8 +37,6 @@ public:
 
     static void Callback(double deltaTime, std::vector<unsigned char> *message, void *userData);
 
-    Napi::Value SetBufferSize(const Napi::CallbackInfo &info);
-
     Napi::Value GetPortCount(const Napi::CallbackInfo &info);
     Napi::Value GetPortName(const Napi::CallbackInfo &info);
 
@@ -49,6 +47,7 @@ public:
     Napi::Value IsPortOpen(const Napi::CallbackInfo &info);
 
     Napi::Value IgnoreTypes(const Napi::CallbackInfo &info);
+    Napi::Value SetBufferSize(const Napi::CallbackInfo &info);
 };
 
 #endif // NODE_MIDI_INPUT_H
